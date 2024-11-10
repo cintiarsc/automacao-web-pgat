@@ -8,8 +8,8 @@
       jobs:
       e2e-tests:
       runs-on: ubuntu-latest
-      steps:
-            # Passo 1 - Check out do repositório
+            steps:
+             # Passo 1 - Check out do repositório
             - name: Checkout do repositório
             uses: actions/checkout@v4
 
