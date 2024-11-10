@@ -29,9 +29,7 @@ jobs:
 
       # Passo 5 - Executando testes E2E (end-to-end)
       - name: Teste E2E (end-to-end)
-        run: |
-          cd automacao-web-pgats
-          yarn test
+        run:  yarn test
 
       # Passo 6 - Gerando relatório de teste
       - name: Upload do relatório de testes
