@@ -7,7 +7,7 @@ on:
 
 jobs:
   e2e-tests:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
     steps:
       # Passo 1 - Check out do repositório
       - name: Checkout do repositório
@@ -25,7 +25,8 @@ jobs:
 
       # Passo 4 - Instalação de dependências do projeto
       - name: Instalando dependências
-        run: yarn install
+        run: cd automacao-web-pgats 
+        yarn install
 
       # Passo 5 - Executando testes E2E (end-to-end)
       - name: Teste E2E (end-to-end)
