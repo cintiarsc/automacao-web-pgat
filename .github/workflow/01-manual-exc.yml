@@ -1,46 +1,40 @@
-CI de Nível 01- Disparo manual a partir de 1 clique
-name: 'Execução Manual '
+# CI de Nível 01 - Disparo manual a partir de 1 clique
+name: 'Execução Manual'
 
-gatilho de exec manual = workflow_dispacth
+# Disparo manual
 on:
-  workflow_dispacth: 
+  workflow_dispatch:
 
 jobs:
-
   e2e-tests:
-    runs-on: ['ubuntu-latest']
+    runs-on: ubuntu-latest
     steps:
-      
-uses: actions/checkout@v4
+      # Passo 1 - Check out do repositório
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
 
-      
-name: instalando Node.js 
-      uses: actions/steup-node@v4
+      # Passo 2 - Instalação do Node.js
+      - name: Instalando Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.16.0'
 
-        # wicth
-          # node-version "20.16.0"
+      # Passo 3 - Instalação do Yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
 
-      
-name: instalando as Yarn
-      run: npm install g- yarn
+      # Passo 4 - Instalação de dependências do projeto
+      - name: Instalando dependências
+        run: yarn install
 
-      
-name: instalando Yarn 
-      run: yarn install
+      # Passo 5 - Executando testes E2E (end-to-end)
+      - name: Teste E2E (end-to-end)
+        run: yarn test
 
-      
-name: Teste E2E (end-to-end)
-      run: yarn test
-
-      
-name: relatorio- teste
-path: ./cypres-report
-
-
-      # passed, falided, cancellad 
-      
-uses: actions/upolad-artifact@v4 
-    if: ${{ ! cancelled () }}
-    with:
-      name: relatorio-de-testes
-      path: ./cypress-reports
+      # Passo 6 - Gerando relatório de teste
+      - name: Upload do relatório de testes
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-de-testes
+          path: ./cypress-report
