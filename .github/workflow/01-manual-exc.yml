@@ -1,0 +1,46 @@
+CI de Nível 01- Disparo manual a partir de 1 clique
+name: 'Execução Manual '
+
+gatilho de exec manual = workflow_dispacth
+on:
+  workflow_dispacth: 
+
+jobs:
+
+  e2e-tests:
+    runs-on: ['ubuntu-latest']
+    steps:
+      
+uses: actions/checkout@v4
+
+      
+name: instalando Node.js 
+      uses: actions/steup-node@v4
+
+        # wicth
+          # node-version "20.16.0"
+
+      
+name: instalando as Yarn
+      run: npm install g- yarn
+
+      
+name: instalando Yarn 
+      run: yarn install
+
+      
+name: Teste E2E (end-to-end)
+      run: yarn test
+
+      
+name: relatorio- teste
+path: ./cypres-report
+
+
+      # passed, falided, cancellad 
+      
+uses: actions/upolad-artifact@v4 
+    if: ${{ ! cancelled () }}
+    with:
+      name: relatorio-de-testes
+      path: ./cypress-reports
