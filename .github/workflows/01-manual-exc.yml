@@ -25,13 +25,13 @@ jobs:
 
       # Passo 4 - Instalação de dependências do projeto
       - name: Instalando dependências
-        run: |
-          cd automacao-web-pgats
-          yarn install
+        run:  yarn install
 
       # Passo 5 - Executando testes E2E (end-to-end)
       - name: Teste E2E (end-to-end)
-        run: yarn test
+        run: |
+          cd automacao-web-pgats
+          yarn test
 
       # Passo 6 - Gerando relatório de teste
       - name: Upload do relatório de testes
