@@ -1,13 +1,13 @@
 # CI de Nível 01 - Disparo manual a partir de 1 clique
-name: 'Execução Manual'
+name: 'CI Execução Manual - Testes WEB'
 
-# Disparo manual
+# Gatilho para execução manual
 on:
   workflow_dispatch:
 
 jobs:
   e2e-tests:
-    #runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       # Passo 1 - Check out do repositório
       - name: Checkout do repositório
@@ -16,8 +16,8 @@ jobs:
       # Passo 2 - Instalação do Node.js
       - name: Instalando Node.js
         uses: actions/setup-node@v4
-        with:
-          node-version: '20.16.0'
+        #with:
+          #node-version: '20.16.0'
 
       # Passo 3 - Instalação do Yarn
       - name: Instalando Yarn
